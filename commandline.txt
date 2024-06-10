@@ -2,4 +2,3 @@ pwd: tells us where we are present working directory
 psr = php standard recommendations 
 dependency : is another program (piece of additional code that  is relied on by another program)  
 options is another name of flags 
-composer init (for initializing)
