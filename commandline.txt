@@ -1,4 +1,27 @@
-pwd: tells us where we are present working directory 
-psr = php standard recommendations 
-dependency : is another program (piece of additional code that  is relied on by another program)  
+#app class 
+router - validator - template - database - container 
+(we have two kinds of files (configurating the system - related to the App)) 
+app class into src (related to the app) 
+
+#PUBLIC folder: Could contains files available to the public 
+
+#dependency : is another program (piece of additional code that  is relied on by another program)  
 options is another name of flags 
+
+#composer init (for initializing)
+
+#composer dump-autoload 
+
+#pwd: tells us where we are present working directory 
+#psr = php standard recommendations 
+
+
+
+#controller handling the content (router? not exactally) - the router define what controller to use 
+the router selects the controller 
+controller will load the page 
+
+# page need data  (Model) -> Database  (controller and Model interacts with each other) 
+the controller works with the view  
+
+#term: register a controller with a route
