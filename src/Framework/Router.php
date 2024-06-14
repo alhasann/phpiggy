@@ -34,6 +34,20 @@ class Router
     {
         $path = $this->normalizePath($path);
         $method = strtoupper($method);
-        echo $path . $method ; 
+        echo $path . $method;
+        echo "<hr>";
+        //finding matches with regx 
+        foreach ($this->routes as $route) {
+            if (
+                !preg_match("#^{$route['path']}$#", $path) ||
+                $route['method'] !== $method
+            ) {
+                continue;
+            }
+            // echo "Route Found!" ;
+            [$class, $function] = $route['controller']; // the controller first store the class name second store the method name [home()] 
+            $controllerInstance = new $class;
+            $controllerInstance->{$function}();
+        }
     }
 }

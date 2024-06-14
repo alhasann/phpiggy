@@ -25,3 +25,9 @@ controller will load the page
 the controller works with the view  
 
 #term: register a controller with a route
+
+
+#PSR 12 
+settings -> @lang:php format on save 
+@lang:php default formatter 
+intelephense format ->psr 12 
