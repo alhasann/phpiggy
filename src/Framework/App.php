@@ -4,34 +4,53 @@ declare(strict_types=1);
 
 namespace Framework;
 
-/** 
- * app class 
- * router - validator - template - database - container 
- *(we have two kinds of files (configurating the system - related to the App)) 
- *app class into src (related to the app)
- *
- *****The main goal of this class is to connect different app's tools (like routers)
-
+/**
+ * The main application class.
+ * 
+ * This class is responsible for initializing the application's components such as the router.
+ * It serves as the central point of the application, connecting different tools like routers, templates, etc.
+ * 
+ * The main goal of this class is to dispatch incoming requests to the appropriate controller actions.
  */
-
-class APP // (App + Router) 
+class App
 {
+    /**
+     * @var Router The router instance used for managing routes and dispatching requests.
+     */
     private Router $router;
+
+    /**
+     * App constructor.
+     * 
+     * Initializes the router.
+     */
     function __construct()
     {
         $this->router = new Router();
     }
 
+    /**
+     * Registers a GET route with the application.
+     * 
+     * This method adds a new route to the router for handling GET requests.
+     * 
+     * @param string $path The URL path for the route.
+     * @param array $controller The controller class and method to handle the route.
+     */
     public function get(string $path, array $controller)
     {
-        $this->router->add('GET', $path, $controller);  //filled routes array 
+        $this->router->add('GET', $path, $controller);
     }
 
-    public function run() //swithc through routes array and return a class Homecontroller and a method 
+    /**
+     * Runs the application.
+     * 
+     * This method dispatches the incoming request to the appropriate controller based on the route configuration.
+     */
+    public function run()
     {
-
-        $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // / 
-        $method = $_SERVER['REQUEST_METHOD']; // GET
-        $this->router->dispatch($path, $method); // will produce new HomeController and run the function within
+        $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+        $method = $_SERVER['REQUEST_METHOD'];
+        $this->router->dispatch($path, $method);
     }
 }

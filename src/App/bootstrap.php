@@ -3,22 +3,21 @@
 declare(strict_types=1);
 
 /**
- * load other files and configuring the project 
+ * Bootstraps the application.
  * 
- * Preparing other files. 
+ * This file loads the necessary dependencies and configurations for the application.
+ * It prepares the application for running but does not actually run it. The public directory files are responsible for invoking the `run` method.
  * 
- * we won't call run method or any method because it is the responsibility of public dir's files. 
- * 
- * @param $app App the application class of my MVC. 
+ * @return \Framework\App The application instance after initialization and configuration.
  */
 
-require __DIR__ . "/../../vendor/autoload.php";  // require throw fatal error in case the file was not existed. we used autoloader instead spl_autoload_register (different logic )
+require __DIR__ . "/../../vendor/autoload.php";
 
-use Framework\APP;
-use App\Controllers\HomeController;
+use Framework\App;
+use function App\Config\registerRoutes;
 
+$app = new App(); // Once you instantiate App, a new instance of Router is issued.
 
-$app = new App(); //once you instantiate APP, a new instance of Router been issued.
-$app->get('/', [HomeController::class, 'home']);
+registerRoutes($app);
 
 return $app;

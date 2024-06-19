@@ -31,3 +31,5 @@ the controller works with the view
 settings -> @lang:php format on save 
 @lang:php default formatter 
 intelephense format ->psr 12 
+
+#again the controller will handle the communication between data and views. 

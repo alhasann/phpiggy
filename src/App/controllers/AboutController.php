@@ -8,11 +8,11 @@ use Framework\TemplateEngine;
 use App\Config\Paths;
 
 /**
- * Controller for handling the 'Home' page.
+ * Controller for handling the 'About' page.
  * 
- * This class manages the rendering of the Home page, using the TemplateEngine for view rendering.
+ * This class manages the rendering of the About page, using the TemplateEngine for view rendering.
  */
-class HomeController
+class AboutController
 {
     /**
      * @var TemplateEngine The template engine instance for rendering views.
@@ -20,7 +20,7 @@ class HomeController
     private TemplateEngine $view;
 
     /**
-     * HomeController constructor.
+     * AboutController constructor.
      * 
      * Initializes the template engine with the path to the views directory.
      */
@@ -30,26 +30,15 @@ class HomeController
     }
 
     /**
-     * Renders the 'Home' page.
-     * 
-     * This method is invoked by the router to render the 'index.php' view with the specified data.
-     */
-    public function home()
-    {
-        echo $this->view->render("/index.php", [
-            'title' => 'Home Page'
-        ]);
-    }
-
-    /**
      * Renders the 'About' page.
      * 
      * This method renders the 'about.php' view with the specified data.
      */
     public function about()
     {
-        echo $this->view->render("/about.php", [
-            'title' => 'About'
+        echo $this->view->render('about.php', [
+            'title' => 'About',
+            'dangerousData' => "<script>alert(123)</script>"
         ]);
     }
 }
